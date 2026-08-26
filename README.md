@@ -1,3 +1,3 @@
-# Tanzania Project
+# chalfont
 
-New project, separate from BEST SUPPLEMENTS INDEX.
+ChezaBora — Tanzania casino/betting comparison site. New project, separate from BEST SUPPLEMENTS INDEX.
