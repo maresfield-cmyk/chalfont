@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://casino-mtandaoni.com/sitemap.xml

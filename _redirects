@@ -1,0 +1,18 @@
+# Old .dc.html URLs -> clean form (permanent redirect, visible in the browser).
+# These need the "!" force flag: the .dc.html files exist on disk, and Netlify
+# serves an existing file directly before consulting redirects unless forced.
+/casino.dc.html               /                                301!
+/kubeti-mtandaoni.dc.html      /kubeti-mtandaoni                301!
+/kindege-aviator.dc.html       /kindege-aviator-crash-games      301!
+/kuhusu-sisi.dc.html           /kuhusu-sisi                      301!
+/404.dc.html                   /404                              301!
+
+# Clean URL -> actual file (rewrite, URL bar stays clean)
+/                               /casino.dc.html                  200
+/kubeti-mtandaoni               /kubeti-mtandaoni.dc.html         200
+/kindege-aviator-crash-games    /kindege-aviator.dc.html          200
+/kuhusu-sisi                    /kuhusu-sisi.dc.html              200
+/404                            /404.dc.html                      200
+
+# Fallback
+/*                              /404.dc.html                      404

@@ -1,2 +1,11 @@
 .DS_Store
 node_modules/
+
+# Local Netlify folder
+.netlify
+
+# Claude Code local session config, not part of the deployed site
+.claude/
+
+# Internal working notes, not for the public site
+assets/kindege-image-specs.md

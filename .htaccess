@@ -1,0 +1,38 @@
+RewriteEngine On
+
+# Force canonical host: https + bare domain, no www
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^casino-mtandaoni\.com$ [NC]
+RewriteRule ^ https://casino-mtandaoni.com%{REQUEST_URI} [L,R=301]
+
+# Strip a trailing slash if one is typed (checked against the raw request, not
+# the internally-rewritten URI, so this never fires on the rewrites below)
+RewriteCond %{THE_REQUEST} \s/+(.+)/[\s?] [NC]
+RewriteRule ^ /%1 [L,R=301]
+
+# Old .dc.html URLs 301 to the clean form. Matched against THE_REQUEST (what the
+# browser actually asked for) rather than the post-rewrite URI, so this can't
+# loop with the internal rewrites further down.
+RewriteCond %{THE_REQUEST} \s/+casino\.dc\.html[\s?] [NC]
+RewriteRule ^ /? [L,R=301]
+
+RewriteCond %{THE_REQUEST} \s/+kubeti-mtandaoni\.dc\.html[\s?] [NC]
+RewriteRule ^ /kubeti-mtandaoni [L,R=301]
+
+RewriteCond %{THE_REQUEST} \s/+kindege-aviator\.dc\.html[\s?] [NC]
+RewriteRule ^ /kindege-aviator-crash-games [L,R=301]
+
+RewriteCond %{THE_REQUEST} \s/+kuhusu-sisi\.dc\.html[\s?] [NC]
+RewriteRule ^ /kuhusu-sisi [L,R=301]
+
+RewriteCond %{THE_REQUEST} \s/+404\.dc\.html[\s?] [NC]
+RewriteRule ^ /404 [L,R=301]
+
+# Clean URL -> actual file (internal rewrite, URL bar stays clean)
+RewriteRule ^$ casino.dc.html [L]
+RewriteRule ^kubeti-mtandaoni$ kubeti-mtandaoni.dc.html [L]
+RewriteRule ^kindege-aviator-crash-games$ kindege-aviator.dc.html [L]
+RewriteRule ^kuhusu-sisi$ kuhusu-sisi.dc.html [L]
+RewriteRule ^404$ 404.dc.html [L]
+
+ErrorDocument 404 /404.dc.html
